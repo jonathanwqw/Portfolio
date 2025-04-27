@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Portfólio | Desenvolvedor</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Loader -->
+    <div class="loader-container">
+        <div class="loader">
+            <span class="circle"></span>
+            <span class="circle"></span>
+            <span class="circle"></span>
+            <span class="circle"></span>
+        </div>
+    </div>
+
+    <!-- Cursor personalizado -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <!-- Partículas de fundo -->
+    <div id="particles-js"></div>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <span>Portfólio</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home" class="nav-link">Início</a></li>
+                <li><a href="#about" class="nav-link">Sobre</a></li>
+                <li><a href="#skills" class="nav-link">Habilidades</a></li>
+                <li><a href="#projects" class="nav-link">Projetos</a></li>
+                <li><a href="#contact" class="nav-link">Contato</a></li>
+            </ul>
+        </nav>
+        <div class="menu-toggle">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+    </header>
+
+    <!-- Seção Início -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="glitch" data-text="Olá, eu sou">Jonathan Santos</h1>
+                <h2 class="name">Desenvolvedor</h2>
+                <p class="subtitle">Desenvolvedor Full Stack</p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn primary-btn">Ver Projetos</a>
+                    <a href="#contact" class="btn secondary-btn">Contato</a>
+                </div>
+                <div class="social-icons">
+                    <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="blob"></div>
+                <div class="floating-icons">
+                    <div class="floating-icon" id="html-icon"><i class="fab fa-html5"></i></div>
+                    <div class="floating-icon" id="css-icon"><i class="fab fa-css3-alt"></i></div>
+                    <div class="floating-icon" id="js-icon"><i class="fab fa-js"></i></div>
+                    <div class="floating-icon" id="react-icon"><i class="fab fa-react"></i></div>
+                    <div class="floating-icon" id="python-icon"><i class="fab fa-python"></i></div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-down">
+            <span>Role para baixo</span>
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- Seção Sobre -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Sobre Mim</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="about-content">
+                <div class="about-image">
+                    <div class="image-container">
+                        <div class="image-shape"></div>
+                    </div>
+                </div>
+                <div class="about-text">
+                    <h3>Quem sou eu?</h3>
+                    <p>Olá! Sou um desenvolvedor apaixonado por criar experiências digitais incríveis. Com uma sólida formação em desenvolvimento web e uma paixão por design, estou sempre buscando novos desafios e oportunidades para expandir meus conhecimentos.</p>
+                    <p>Minha jornada na programação começou há um ano, e desde então tenho trabalhado em diversos projetos que me permitiram aprimorar minhas habilidades técnicas e criativas. Acredito que a combinação de código limpo e design intuitivo é essencial para criar produtos digitais de sucesso.</p>
+                    <div class="about-details">
+                        <div class="detail">
+                            <i class="fas fa-graduation-cap"></i>
+                            <div>
+                                <h4>Educação</h4>
+                                <p>Formação em t.I "Tecnologia da Informação"</p>
+                            </div>
+                        </div>
+                        <div class="detail">
+                            <i class="fas fa-briefcase"></i>
+                            <div>
+                                <h4>Experiência</h4>
+                                <p>1+ anos em desenvolvimento web</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#" class="btn primary-btn">Download CV</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Habilidades -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Minhas Habilidades</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="skills-content">
+                <div class="skill-category">
+                    <h3>Linguagens de Programação</h3>
+                    <div class="skills-grid">
+                        <div class="skill-card" data-skill="Python">
+                            <div class="skill-icon">
+                                <i class="fab fa-python"></i>
+                            </div>
+                            <h4>Python</h4>
+                            <div class="skill-level">
+                                <div class="skill-progress" data-level="90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-card" data-skill="JavaScript">
+                            <div class="skill-icon">
+                                <i class="fab fa-js"></i>
+                            </div>
+                            <h4>JavaScript</h4>
+                            <div class="skill-level">
+                                <div class="skill-progress" data-level="85%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Desenvolvimento Web</h3>
+                    <div class="skills-grid">
+                        <div class="skill-card" data-skill="HTML">
+                            <div class="skill-icon">
+                                <i class="fab fa-html5"></i>
+                            </div>
+                            <h4>HTML</h4>
+                            <div class="skill-level">
+                                <div class="skill-progress" data-level="95%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-card" data-skill="CSS">
+                            <div class="skill-icon">
+                                <i class="fab fa-css3-alt"></i>
+                            </div>
+                            <h4>CSS</h4>
+                            <div class="skill-level">
+                                <div class="skill-progress" data-level="90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-card" data-skill="React">
+                            <div class="skill-icon">
+                                <i class="fab fa-react"></i>
+                            </div>
+                            <h4>React</h4>
+                            <div class="skill-level">
+                                <div class="skill-progress" data-level="80%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Projetos -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Meus Projetos</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="img/project1.jpg" alt="Projeto 1">
+                        <div class="project-overlay">
+                            <div class="project-info">
+                                <h3>Sistema de Gestão</h3>
+                                <p>Aplicação web para gerenciamento de tarefas e projetos</p>
+                                <div class="project-tech">
+                                    <span>HTML</span>
+                                    <span>CSS</span>
+                                    <span>JavaScript</span>
+                                    <span>React</span>
+                                </div>
+                                <div class="project-links">
+                                    <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                                    <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="img/project2.jpg" alt="Projeto 2">
+                        <div class="project-overlay">
+                            <div class="project-info">
+                                <h3>E-commerce</h3>
+                                <p>Plataforma de comércio eletrônico com sistema de pagamento integrado</p>
+                                <div class="project-tech">
+                                    <span>HTML</span>
+                                    <span>CSS</span>
+                                    <span>JavaScript</span>
+                                    <span>Python</span>
+                                </div>
+                                <div class="project-links">
+                                    <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                                    <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="img/project3.avif" alt="Projeto 3">
+                        <div class="project-overlay">
+                            <div class="project-info">
+                                <h3>Aplicativo Mobile</h3>
+                                <p>Aplicativo de rastreamento de hábitos e produtividade</p>
+                                <div class="project-tech">
+                                    <span>React</span>
+                                    <span>JavaScript</span>
+                                    <span>CSS</span>
+                                </div>
+                                <div class="project-links">
+                                    <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                                    <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Contato -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Entre em Contato</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h3>Email</h3>
+                            <p>jonathamalvysss@gmail.com.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h3>Telefone</h3>
+                            <p>+55 (33) 99193-1014</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h3>Localização</h3>
+                            <p>Teofio-otóne, Brasil</p>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://github.com/jonathanwqw" class="social-link"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/jonathan-lemore-progamador-9317a3189?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="social-link"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/jonathan_t.i?igsh=cmhtb2t3NjczbXVt" class="social-link"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" placeholder="Seu Nome" required>
+                            <label for="name">Nome</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" placeholder="Seu Email" required>
+                            <label for="email">Email</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="subject" name="subject" placeholder="Assunto" required>
+                            <label for="subject">Assunto</label>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" placeholder="Sua Mensagem" required></textarea>
+                            <label for="message">Mensagem</label>
+                        </div>
+                        <button type="submit" class="btn primary-btn">Enviar Mensagem</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span>Portfólio</span>
+                </div>
+                <p>&copy; 2025 Todos os direitos reservados</p>
+                <div class="footer-social">
+                    <a href="https://github.com/jonathanwqw" class="social-icon"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/jonathan-lemore-progamador-9317a3189?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/jonathan_t.i?igsh=cmhtb2t3NjczbXVt" class="social-icon"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botão de voltar ao topo -->
+    <a href="#home" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
