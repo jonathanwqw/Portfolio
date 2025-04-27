@@ -56,6 +56,7 @@ ul {
 img {
     max-width: 100%;
     height: auto;
+    opacity: 70%;
 }
 
 .container {
