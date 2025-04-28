@@ -255,13 +255,13 @@ document.addEventListener('DOMContentLoaded', function() {
          submitBtn.disabled = true;
 
          // Substitua pelos seus IDs reais do EmailJS
-         const serviceID = "SEU_SERVICE_ID"; 
-         const templateID = "SEU_TEMPLATE_ID";
+         const serviceID = "service_nbrn39s"; 
+         const templateID = "template_mm3mga5";
 
          // Envia o formulário usando EmailJS
          emailjs.sendForm(serviceID, templateID, this)
              .then(() => {
-                 submitBtn.textContent = "Mensagem Enviada!";
+                 submitBtn.textContent = "Mensagem Enviada! ok";
                  contactForm.reset();
                  setTimeout(() => {
                      submitBtn.textContent = originalText;
