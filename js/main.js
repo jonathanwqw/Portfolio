@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Remover o loader após o carregamento da página
     setTimeout(function() {
         const loader = document.querySelector('.loader-container');
-        loader.style.opacity = '0';
+        loader.style.opacity = '1';
         setTimeout(function() {
             loader.style.display = 'none';
         }, 500);
