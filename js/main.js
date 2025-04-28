@@ -276,25 +276,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // --- Fim da substituição ---
             
-            // Simulação de envio de formulário
-            const submitBtn = contactForm.querySelector('button[type="submit"]');
-            const originalText = submitBtn.textContent;
-            
-            submitBtn.textContent = 'Enviando...';
-            submitBtn.disabled = true;
-            
-            setTimeout(function() {
-                submitBtn.textContent = 'Mensagem Enviada!';
-                contactForm.reset();
-                
-                setTimeout(function() {
-                    submitBtn.textContent = originalText;
-                    submitBtn.disabled = false;
-                }, 3000);
-            }, 2000);
-        });
-    }
-
     // Animação de digitação para o título
     const nameElement = document.querySelector('.name');
     if (nameElement) {
