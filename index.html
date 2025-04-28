@@ -8,7 +8,6 @@ e<!DOCTYPE html>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <body>
     <!-- Loader -->
     <div class="loader-container">
@@ -353,55 +352,6 @@ e<!DOCTYPE html>
 
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
-    <!-- SweetAlert2 -->
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<!-- Seu Script de envio -->
-<script>
-  (function() {
-    emailjs.init('fixlqnhlfewxmfba'); // Sua chave pública
-  })();
-
-  document.getElementById('contactForm').addEventListener('submit', function(event) {
-    event.preventDefault(); // Não deixa o form recarregar
-
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const subject = document.getElementById('subject').value;
-    const message = document.getElementById('message').value;
-
-    const finalMessage = `
-Nome: ${name}
-Email: ${email}
-Assunto: ${subject}
-Mensagem: ${message}
-    `;
-
-    emailjs.send('default_service', 'template_default', {
-      from_name: 'jonathamalvysss@gmail.com',
-      to_name: 'jonathan2020@gmail.com',
-      message: finalMessage,
-    }).then(function(response) {
-      Swal.fire({
-        icon: 'success',
-        title: 'Mensagem enviada!',
-        text: 'Sua mensagem foi enviada com sucesso!',
-        confirmButtonColor: '#3085d6',
-        confirmButtonText: 'OK'
-      });
-      console.log('SUCESSO!', response.status, response.text);
-    }, function(error) {
-      Swal.fire({
-        icon: 'error',
-        title: 'Erro!',
-        text: 'Ocorreu um erro ao enviar a mensagem. Tente novamente!',
-        confirmButtonColor: '#d33',
-        confirmButtonText: 'Tentar de novo'
-      });
-      console.log('ERRO!', error);
-    });
-  });
-</script>
-
     <script src="js/main.js"></script>
 </body>
 </html>
