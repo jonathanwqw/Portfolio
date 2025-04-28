@@ -241,10 +241,40 @@ document.addEventListener('DOMContentLoaded', function() {
     animateSkills();
 
     // Formulário de contato
-    const contactForm = document.getElementById('contactForm');
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
+        const submitBtn = contactForm.querySelector("button[type='submit']");
+        const originalText = submitBtn.textContent;
+
+        submitBtn.textContent = "Enviando...";
+        submitBtn.disabled = true;
+
+        // Obtenha os IDs do seu serviço e template no EmailJS
+        const serviceID = "service_nbrn39s";
+        const templateID = "template_mm3mga5";
+
+        // Envia o formulário usando EmailJS
+        emailjs.sendForm(serviceID, templateID, this)
+            .then(() => {
+                submitBtn.textContent = "Mensagem Enviada!";
+                contactForm.reset();
+                setTimeout(() => {
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                }, 3000);
+            }, (err) => {
+                submitBtn.textContent = "Erro ao Enviar";
+                submitBtn.style.backgroundColor = "red"; // Indica erro visualmente
+                console.error("Erro ao enviar e-mail:", JSON.stringify(err));
+                alert("Ocorreu um erro ao enviar a mensagem. Tente novamente mais tarde.");
+                setTimeout(() => {
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                    submitBtn.style.backgroundColor = ""; // Restaura a cor do botão
+                }, 5000);
+            });
+    });
+}
+
+// --- Fim da substituição ---
             
             // Simulação de envio de formulário
             const submitBtn = contactForm.querySelector('button[type="submit"]');
