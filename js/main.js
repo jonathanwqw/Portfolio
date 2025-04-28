@@ -255,7 +255,7 @@ document.addEventListener('DOMContentLoaded', function() {
          submitBtn.disabled = true;
 
          // Substitua pelos seus IDs reais do EmailJS
-         const serviceID = "service_nbrn39s"; 
+         const serviceID = "1q2w3e4r5t6y7u"; 
          const templateID = "template_mm3mga5";
 
          // Envia o formulário usando EmailJS
