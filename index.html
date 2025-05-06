@@ -1,396 +1,138 @@
-e<!DOCTYPE html>
-<html lang="pt-br">
+<!DOCTYPE html>
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meu Portfólio | Desenvolvedor</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Naruto Pixel Card Game</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Loader -->
-    <div class="loader-container">
-        <div class="loader">
-            <span class="circle"></span>
-            <span class="circle"></span>
-            <span class="circle"></span>
-            <span class="circle"></span>
+    <nav id="top-nav">
+        <button id="nav-combat" class="nav-button active">Combate</button>
+        <button id="nav-inventory" class="nav-button">Inventário</button>
+        <button id="nav-shop" class="nav-button">Loja</button>
+        <button id="nav-equipment" class="nav-button">Equipamentos</button>
+        <button id="nav-craft" class="nav-button">Craft Card</button>
+        <button id="nav-chests" class="nav-button">Baús</button>
+    </nav>
+
+    <div id="game-area" class="game-section active-section">
+        <!-- Conteúdo da área de combate -->
+        <div id="game-container">
+            <h1>Naruto Pixel Card Game</h1>
+            <div id="player-profile-display" style="grid-area: header; text-align: right; font-size: 12px; margin-bottom: 10px;">
+                 <span>Nível: <span id="player-level">1</span></span> |
+                 <span>XP: <span id="player-xp">0 / 100</span></span> |
+                 <span>Moedas: <span id="player-currency">0</span></span>
+            </div>
+
+            <!-- Nova Área de Status Centralizada -->
+            <div id="battle-status-container">
+                <div id="player-status-side" class="status-side">
+                    <h2>Jogador</h2>
+                    <div class="player-avatar">YOU</div>
+                    <div class="stats-display">
+                        <span>Vida: <span id="player-health">100</span> / <span id="player-max-health">100</span></span>
+                        <div class="health-bar"><div id="player-health-bar-fill"></div></div>
+                        <span>Chakra: <span id="player-chakra">50</span> / <span id="player-max-chakra">50</span></span>
+                        <div class="chakra-bar"><div id="player-chakra-bar-fill"></div></div>
+                        <div id="player-status-effects" class="status-effects"></div>
+                        <!-- Área para stats temporários (atk, def, etc.) -->
+                        <div id="player-temp-stats" class="temp-stats"></div>
+                    </div>
+                    <div id="player-hand" class="hand-area"><p>Mão Jogador</p></div>
+                </div>
+                <div id="opponent-status-side" class="status-side">
+                    <h2>Oponente</h2>
+                    <div class="player-avatar">OPP</div>
+                     <div class="stats-display">
+                        <span>Vida: <span id="opponent-health">100</span> / <span id="opponent-max-health">100</span></span>
+                        <div class="health-bar"><div id="opponent-health-bar-fill"></div></div>
+                        <span>Chakra: <span id="opponent-chakra">50</span> / <span id="opponent-max-chakra">50</span></span>
+                        <div class="chakra-bar"><div id="opponent-chakra-bar-fill"></div></div>
+                        <div id="opponent-status-effects" class="status-effects"></div>
+                        <!-- Área para stats temporários (atk, def, etc.) -->
+                        <div id="opponent-temp-stats" class="temp-stats"></div>
+                    </div>
+                    <div id="opponent-hand" class="hand-area"><p>Mão Oponente</p></div>
+                </div>
+            </div>
+
+            <!-- Área do Tabuleiro (Log, Turno) -->
+            <div id="game-board">
+                <p>Turno: <span id="turn-counter">1</span></p>
+                <div id="message-log" style="height: 60px; overflow-y: scroll; border: 1px solid #7f8c8d; background: rgba(0,0,0,0.2); font-size: 11px; text-align: left; padding: 5px; margin: 5px 0;">
+                    <p>Log da Batalha:</p>
+                </div>
+                <button id="end-turn-button">Finalizar Turno</button>
+            </div>
+
+            <!-- Áreas de Campo Removidas -->
+
         </div>
     </div>
 
-    <!-- Cursor personalizado -->
-    <div class="cursor"></div>
-    <div class="cursor-follower"></div>
+    <div id="inventory-area" class="game-section">
+        <h2>Inventário</h2>
+        <div id="inventory-controls" style="margin-bottom: 15px; text-align: center;">
+            <button id="toggle-sell-mode-button" class="game-button">Vender Cartas</button>
+        </div>
+        <div id="inventory-main-content" style="display: flex; flex-direction: row; gap: 15px; width: 100%; max-width: 950px;"> 
+            <div id="inventory-display" style="flex-grow: 1;">
+                <!-- As categorias e cartas do inventário serão renderizadas aqui pelo JS -->
+            </div>
+            <div id="sell-cart-container" style="width: 280px; flex-shrink: 0; display: none; border-left: 1px solid #7f8c8d; padding-left: 15px; background-color: rgba(0,0,0,0.1); border-radius: 5px; padding: 10px;">
+                <h3>Carrinho de Venda</h3>
+                <div id="sell-cart-items" style="max-height: 300px; overflow-y: auto; margin-bottom: 10px; min-height: 50px; border-bottom: 1px dashed #566573; padding-bottom: 10px;">
+                    <p>Selecione cartas para vender.</p>
+                </div>
+                <div id="sell-cart-summary">
+                    <p style="font-weight: bold; margin-bottom: 10px;">Total da Venda: <span id="sell-cart-total-value">0</span> Joias</p>
+                    <button id="confirm-sell-button" class="game-button" style="width: 100%; margin-bottom: 5px;">Confirmar Venda</button>
+                    <button id="clear-sell-cart-button" class="game-button" style="width: 100%; background-color: #7f8c8d;">Limpar Carrinho</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <!-- Partículas de fundo -->
-    <div id="particles-js"></div>
+    <div id="shop-area" class="game-section">
+        <!-- Conteúdo da Loja -->
+        <h2>Loja</h2>
+        <div id="shop-container" style="display: flex; gap: 20px;">
+            <div id="shop-display" style="flex-grow: 1;">
+                <p>Compre novas cartas e itens aqui.</p>
+            </div>
+            <div id="cart-area" style="width: 250px; border-left: 1px solid #ccc; padding-left: 15px;">
+                <h3>Carrinho</h3>
+                <div id="cart-items"><p>Seu carrinho está vazio.</p></div>
+                <div id="cart-total" style="margin-top: 15px; font-weight: bold;">Total: 0 Moedas</div>
+                <button id="finalize-purchase-button" class="game-button" style="margin-top: 10px; width: 100%;">Finalizar Compra</button>
+            </div>
+        </div>
+    </div>
 
-    <!-- Header -->
-    <header>
-        <div class="logo">
-            <span>Portfólio Jonathan
-            
-            </span>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="#home" class="nav-link">Início</a></li>
-                <li><a href="#about" class="nav-link">Sobre</a></li>
-                <li><a href="#skills" class="nav-link">Habilidades</a></li>
-                <li><a href="#projects" class="nav-link">Projetos</a></li>
-                <li><a href="#contact" class="nav-link">Contato</a></li>
-            </ul>
-        </nav>
-        <div class="menu-toggle">
-            <div class="bar"></div>
-            <div class="bar"></div>
-            <div class="bar"></div>
-        </div>
-    </header>
+    <div id="equipment-area" class="game-section">
+        <!-- Conteúdo da aba Equipamentos -->
+        <h2>Equipamentos</h2>
+        <p>Gerencie seus equipamentos aqui.</p>
+        <!-- Conteúdo será gerado pelo JS -->
+    </div>
 
-    <!-- Seção Início -->
-    <section id="home" class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1 class="glitch" data-text="Olá, eu sou">Jonathan Santos</h1>
-                <h1>.</h1>
-                <h1>.</h1>
-                <p class="name">Desenvolvedor Full Stack</p>
-                <div class="hero-buttons">
-                    <a href="#projects" class="btn primary-btn">Ver Projetos</a>
-                    <a href="#contact" class="btn secondary-btn">Contato</a>
-                    <a  href="img/CVjonathan1.pdf" class="btn secondary-btn">Download CV</a>
-                    
-                </div>
-                <div class="social-icons">
-                    <a href="https://github.com/jonathanwqw" class="social-icon"><i class="fab fa-github"></i></a>
-                    <a href="https://www.linkedin.com/in/jonathan-lemore-progamador-9317a3189?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app
-                        " class="social-icon"><i class="fab fa-linkedin"></i></a>
-                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-                    <a href="https://www.instagram.com/jonathan_t.i?igsh=cmhtb2t3NjczbXVt" class="social-icon"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
-            <div class="hero-image">
-                <div class="blob"></div>
-                <div class="floating-icons">
-                    <div class="floating-icon" id="html-icon"><i class="fab fa-html5"></i></div>
-                    <div class="floating-icon" id="css-icon"><i class="fab fa-css3-alt"></i></div>
-                    <div class="floating-icon" id="js-icon"><i class="fab fa-js"></i></div>
-                    <div class="floating-icon" id="react-icon"><i class="fab fa-react"></i></div>
-                    <div class="floating-icon" id="python-icon"><i class="fab fa-python"></i></div>
-                </div>
-            </div>
-        </div>
-        <div class="scroll-down">
-            <span>Role para baixo</span>
-            <i class="fas fa-chevron-down"></i>
-        </div>
-    </section>
+    <div id="craft-area" class="game-section">
+        <!-- Conteúdo da aba Craft -->
+        <h2>Craft Card</h2>
+        <p>Crie novas cartas usando materiais.</p>
+        <!-- Conteúdo será gerado pelo JS -->
+    </div>
 
-    <!-- Seção Sobre -->
-    <section id="about" class="about">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Sobre Mim</h2>
-                <div class="section-line"></div>
-            </div>
-            <div class="about-content">
-                <div class="about-image">
-                    <div class="image-container">
-                        <div class="image-shape"></div>
-                    </div>
-                </div>
-                <div class="about-text">
-                    <h3>Quem sou eu?</h3>
-                    <p>Olá! Sou um desenvolvedor apaixonado por criar experiências digitais incríveis. Com uma sólida formação em desenvolvimento web e uma paixão por design, estou sempre buscando novos desafios e oportunidades para expandir meus conhecimentos.</p>
-                    <p>Minha jornada na programação começou há um ano, e desde então tenho trabalhado em diversos projetos que me permitiram aprimorar minhas habilidades técnicas e criativas. Acredito que a combinação de código limpo e design intuitivo é essencial para criar produtos digitais de sucesso.</p>
-                    <div class="about-details">
-                        <div class="detail">
-                            <i class="fas fa-graduation-cap"></i>
-                            <div>
-                                <h4>Educação</h4>
-                                <p>Formação em t.I "Tecnologia da Informação"</p>
-                            </div>
-                        </div>
-                        <div class="detail">
-                            <i class="fas fa-briefcase"></i>
-                            <div>
-                                <h4>Experiência</h4>
-                                <p>1+ anos em desenvolvimento web</p>
-                            </div>
-                        </div>
-                    </div>
-                    <a href="img/CVjonathan1.pdf" class="btn primary-btn">Download CV</a>
-                </div>
-            </div>
-        </div>
-    </section>
+    <div id="chests-area" class="game-section">
+        <!-- Conteúdo da aba Baús -->
+        <h2>Baús</h2>
+        <p>Abra seus baús aqui.</p>
+        <!-- Conteúdo será gerado pelo JS -->
+    </div>
 
-    <!-- Seção Habilidades -->
-    <section id="skills" class="skills">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Minhas Habilidades</h2>
-                <div class="section-line"></div>
-            </div>
-            <div class="skills-content">
-                <div class="skill-category">
-                    <h3>Linguagens de Programação</h3>
-                    <div class="skills-grid">
-                        <div class="skill-card" data-skill="Python">
-                            <div class="skill-icon">
-                                <i class="fab fa-python"></i>
-                            </div>
-                            <h4>Python</h4>
-                            <div class="skill-level">
-                                <div class="skill-progress" data-level="90%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-card" data-skill="JavaScript">
-                            <div class="skill-icon">
-                                <i class="fab fa-js"></i>
-                            </div>
-                            <h4>JavaScript</h4>
-                            <div class="skill-level">
-                                <div class="skill-progress" data-level="85%"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3>Desenvolvimento Web</h3>
-                    <div class="skills-grid">
-                        <div class="skill-card" data-skill="HTML">
-                            <div class="skill-icon">
-                                <i class="fab fa-html5"></i>
-                            </div>
-                            <h4>HTML</h4>
-                            <div class="skill-level">
-                                <div class="skill-progress" data-level="95%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-card" data-skill="CSS">
-                            <div class="skill-icon">
-                                <i class="fab fa-css3-alt"></i>
-                            </div>
-                            <h4>CSS</h4>
-                            <div class="skill-level">
-                                <div class="skill-progress" data-level="90%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-card" data-skill="React">
-                            <div class="skill-icon">
-                                <i class="fab fa-react"></i>
-                            </div>
-                            <h4>React</h4>
-                            <div class="skill-level">
-                                <div class="skill-progress" data-level="80%"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Seção Projetos -->
-    <section id="projects" class="projects">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Meus Projetos</h2>
-                <div class="section-line"></div>
-            </div>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="img/project1.jpg" alt="Projeto 1">
-                        <div class="project-overlay">
-                            <div class="project-info">
-                                <h3>Sistema de Gestão</h3>
-                                <p>Aplicação web para gerenciamento de tarefas e projetos</p>
-                                <div class="project-tech">
-                                    <span>HTML</span>
-                                    <span>CSS</span>
-                                    <span>JavaScript</span>
-                                    <span>React</span>
-                                </div>
-                                <div class="project-links">
-                                    <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
-                                    <a href="#" class="project-link"><i class="fab fa-github"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="img/project2.jpg" alt="Projeto 2">
-                        <div class="project-overlay">
-                            <div class="project-info">
-                                <h3>E-commerce</h3>
-                                <p>Plataforma de comércio eletrônico com sistema de pagamento integrado</p>
-                                <div class="project-tech">
-                                    <span>HTML</span>
-                                    <span>CSS</span>
-                                    <span>JavaScript</span>
-                                    <span>Python</span>
-                                </div>
-                                <div class="project-links">
-                                    <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
-                                    <a href="#" class="project-link"><i class="fab fa-github"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="img/project3.avif" alt="Projeto 3">
-                        <div class="project-overlay">
-                            <div class="project-info">
-                                <h3>Aplicativo Mobile</h3>
-                                <p>Aplicativo de rastreamento de hábitos e produtividade</p>
-                                <div class="project-tech">
-                                    <span>React</span>
-                                    <span>JavaScript</span>
-                                    <span>CSS</span>
-                                </div>
-                                <div class="project-links">
-                                    <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
-                                    <a href="#" class="project-link"><i class="fab fa-github"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Seção Contato -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Entre em Contato</h2>
-                <div class="section-line"></div>
-            </div>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <div>
-                            <h3>Email</h3>
-                            <p>jonathamalvysss@gmail.com</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <div>
-                            <h3>Telefone</h3>
-                            <p>+55 (33) 99193-1014</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div>
-                            <h3>Localização</h3>
-                            <p>Teófilo-otoni, Brasil</p>
-                        </div>
-                    </div>
-                    <div class="social-links">
-                        <a href="https://github.com/jonathanwqw" class="social-link"><i class="fab fa-github"></i></a>
-                        <a href="https://www.linkedin.com/in/jonathan-lemore-progamador-9317a3189?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="social-link"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                        <a href="https://www.instagram.com/jonathan_t.i?igsh=cmhtb2t3NjczbXVt" class="social-link"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-                <div class="contact-form">
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <input type="text" id="name" name="name" placeholder="Seu Nome" required>
-                            <label for="name">Nome</label>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" id="email" name="email" placeholder="Seu Email" required>
-                            <label for="email">Email</label>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" id="subject" name="subject" placeholder="Assunto" required>
-                            <label for="subject">Assunto</label>
-                        </div>
-                        <div class="form-group">
-                            <textarea id="message" name="message" placeholder="Sua Mensagem" required></textarea>
-                            <label for="message">Mensagem</label>
-                        </div>
-                        <button type="submit" class="btn primary-btn">Enviar Mensagem</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--Deixe seu comentario-->
-    <section id="contact" class="contact">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Deixe seu comentario</h2>
-                <div class="section-line"></div>
-            </div>
-                <div class="contact-form">
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <input type="text" id="name" name="name" placeholder="Seu Nome" required>
-                            <label for="name">Nome</label>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" id="email" name="email" placeholder="Seu Email" required>
-                            <label for="email">Email</label>
-                        </div>
-                        <div class="form-group">
-                            <textarea id="message" name="message" placeholder="Sua Mensagem" required></textarea>
-                            <label for="message">Comentario</label>
-                        </div>
-                        <button type="submit" class="btn primary-btn">Enviar Comentario</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-        
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <span>Portfólio</span>
-                </div>
-                <p>&copy; 2025 Todos os direitos reservados</p>
-                <div class="footer-social">
-                    <a href="https://github.com/jonathanwqw" class="social-icon"><i class="fab fa-github"></i></a>
-                    <a href="https://www.linkedin.com/in/jonathan-lemore-progamador-9317a3189?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="social-icon"><i class="fab fa-linkedin"></i></a>
-                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-                    <a href="https://www.instagram.com/jonathan_t.i?igsh=cmhtb2t3NjczbXVt" class="social-icon"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Botão de voltar ao topo -->
-    <a href="#home" class="back-to-top">
-        <i class="fas fa-arrow-up"></i>
-    </a>
-
-    <!-- Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
-    <script src="js/main.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-    <script type="text/javascript">
-        (function(){
-        emailjs.init({
-         publicKey: "gT893n-r6na7h-jda", // Obtenha seu User ID no EmailJS
-           });
-        })();
-     </script>
-    
+    <script src="script.js"></script>
 </body>
 </html>
+
